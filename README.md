@@ -21,9 +21,8 @@ QuickCart therefore needs to identify which Store × SKU combinations require at
 Build a multi-class classification system that predicts:
 How risky is it that a product will run out before the next replenishment arrives?
 The project uses:
-```text
 Inventory Buffer = Days of Stock Cover - Replenishment Wait
-```
+
 ### Dataset Overview
 The project contains five interconnected datasets which were already uploaded in this repository in the .csv format.
 
@@ -94,9 +93,9 @@ Event type
 Festival demand multiplier
 Other demand multiplier
 Derived Features
-```text
+
 Reorder Gap = Reorder Point - Closing Stock
-```
+
 Historical cover pressure is also derived from lagged stock and demand information.
 
 ### Leakage Prevention
@@ -125,12 +124,12 @@ Class balancing is applied to Logistic Regression and Random Forest.
 
 ### Train/Test Strategy
 A time-based split is used rather than a purely random split:
-```text
+
 Training Data
 2026-10-01 → 2026-10-23
 Testing Data
 2026-10-24 → 2026-10-30
-```
+
 This better represents a real-world scenario in which historical data is used to evaluate performance on later observations.
 
 ### Model Evaluation
@@ -143,11 +142,12 @@ Classification report
 Confusion matrix
 Imminent-class recall
 Why Imminent Recall Matters
+
 A particularly costly error can be:
-```text
+
 Actual: Imminent
 Predicted: Safe
-```
+
 The system would fail to warn the business about a potential stockout. Therefore, overall accuracy is not treated as the only evaluation criterion.
 
 ### Prediction Output
@@ -158,14 +158,12 @@ Date
 Actual risk
 Predicted risk
 Class probabilities
-A separate high-risk inventory output is generated for records predicted as:
-```text
-Imminent
-```
+A separate high-risk inventory output is generated for records predicted as:Imminent
+
 ### This connects ML predictions with practical inventory monitoring.
 
 Business Workflow
-```text
+
 Daily Inventory Data
         ↓
 Data Cleaning & Integration
@@ -181,7 +179,7 @@ Risk Classification
 └──────────┴───────────┴────────────┘
         ↓
 Inventory Team Action
-```
+
 ### Example Actions
 Safe
 Continue normal replenishment planning
@@ -209,8 +207,7 @@ Google Colab	Development environment
 CSV	Data storage
 
 ### Project Structure
-```text
-QuickCart-Warehouse-Stockout-Risk/
+QuickCart_Warehouse_Stockout_Risk
 │
 ├── README.md
 │
@@ -226,18 +223,13 @@ QuickCart-Warehouse-Stockout-Risk/
 |
 ├── Outputs
 
-How to Run
+### How to Run
 1. Install dependencies
-```bash
-pip install pandas numpy matplotlib scikit-learn joblib
-```
+pip install pandas numpy matplotlib scikit-learn joblib.
 2. Open the notebook
 Open:https://colab.research.google.com/drive/1kWV-ErfkEGRDIkOBBx0rp1mTZPflUWln
-```text
 Clone the datasets from repository
-
 3. Run the pipeline
-```text
 Data Loading
 → Data Validation
 → Data Cleaning
@@ -248,8 +240,7 @@ Data Loading
 → Model Evaluation
 → Risk Prediction
 → High-Risk Export
-```
----
+
 ### Key Project Learnings
 This project demonstrates practical understanding of:
 Multi-table data integration
@@ -267,13 +258,13 @@ Translating predictions into operational actions
 
 ### Future Improvements
 A more production-oriented version could move the target into the future:
-```text
+
 Today's Information
         ↓
 Predict Tomorrow / Next Few Days
         ↓
 Future Stockout Risk
-```
+
 ### Potential extensions:
 Future-horizon stockout prediction
 XGBoost / LightGBM comparison
