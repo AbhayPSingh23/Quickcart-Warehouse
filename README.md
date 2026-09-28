@@ -4,9 +4,12 @@
 QuickCart Warehouse Inventory Stockout Risk is an end-to-end machine learning project designed to predict inventory stockout risk at the Store × SKU × Day level.
 
 QuickCart operates 12 dark stores across 6 Indian metropolitan cities, managing 60 SKUs across 8 categories and 15 suppliers. The system classifies inventory positions into:
-🟢 Safe — sufficient stock buffer before replenishment arrives.
-🟡 At-Risk — stock cover is getting close to replenishment wait.
-🔴 Imminent — inventory may run out before replenishment arrives.
+
+1.🟢 Safe — sufficient stock buffer before replenishment arrives.
+
+2.🟡 At-Risk — stock cover is getting close to replenishment wait.
+
+3.🔴 Imminent — inventory may run out before replenishment arrives.
 
 The goal is to provide an early-warning system that helps inventory teams balance product availability against excess inventory.
 
