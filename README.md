@@ -1,21 +1,21 @@
 # QuickCart Warehouse Inventory Stockout Risk
 
-## Project Overview
+### Project Overview
 QuickCart Warehouse Inventory Stockout Risk is an end-to-end machine learning project designed to predict inventory stockout risk at the Store × SKU × Day level.
 
 QuickCart operates 12 dark stores across 6 Indian metropolitan cities, managing 60 SKUs across 8 categories and 15 suppliers. The system classifies inventory positions into:
 
-### 🟢 Safe — sufficient stock buffer before replenishment arrives
-### 🟡 At-Risk — stock cover is getting close to replenishment wait
-### 🔴 Imminent — inventory may run out before replenishment arrives
+ 🟢 Safe — sufficient stock buffer before replenishment arrives
+ 🟡 At-Risk — stock cover is getting close to replenishment wait
+ 🔴 Imminent — inventory may run out before replenishment arrives
 
 The goal is to provide an early-warning system that helps inventory teams balance product availability against excess inventory.**
 
-## Business Problem
+### Business Problem
 Stockouts in quick-commerce can cause lost sales, poor customer experience, reduced availability, and emergency replenishment. Excess inventory can simultaneously increase capital tied up in stock, storage requirements, wastage risk, and operating costs.
 QuickCart therefore needs to identify which Store × SKU combinations require attention before a stockout occurs.
 
-## Project Objective
+### Project Objective
 Build a multi-class classification system that predicts:
 How risky is it that a product will run out before the next replenishment arrives?
 The project uses:
@@ -46,7 +46,7 @@ At-Risk	24.01%
 Imminent	10.57%
 Because of this class imbalance, accuracy alone is not sufficient for evaluation. Particular attention is given to Imminent recall, since missing a genuine stockout risk can have a direct business cost.
 
-## Feature Engineering
+### Feature Engineering
 The model combines current inventory information, historical behavior, supplier characteristics, product characteristics, store characteristics, and event information.
 Inventory Features
 `opening_stock`
@@ -91,9 +91,9 @@ Derived Features
 ```text
 Reorder Gap = Reorder Point - Closing Stock
 ```
-## Historical cover pressure is also derived from lagged stock and demand information.
+Historical cover pressure is also derived from lagged stock and demand information.
 
-## Leakage Prevention
+### Leakage Prevention
 A major consideration is target leakage.
 The target is itself defined using stock-cover and replenishment information. Directly feeding variables that reproduce the target definition could make the model appear stronger than it really is.
 Therefore, these direct/current variables were excluded:
@@ -104,17 +104,17 @@ Current `sales_velocity_7d`
 Historical and lagged information is used where appropriate.
 A model should use information that would actually be available at prediction time.
 
-## Machine Learning Approach
+### Machine Learning Approach
 The project is formulated as a three-class classification problem.
-## Baseline
+### Baseline
 A majority-class baseline predicts `Safe` for every observation. Since Safe represents approximately 65.42% of the data, this provides a useful benchmark.
-## Models
+### Models
 Logistic Regression
 Random Forest
 Gradient Boosting
 Categorical variables are transformed using One-Hot Encoding and numerical variables are standardized where appropriate.
 Class balancing is applied to Logistic Regression and Random Forest.
-## Train/Test Strategy
+### Train/Test Strategy
 A time-based split is used rather than a purely random split:
 ```text
 Training Data
@@ -122,9 +122,9 @@ Training Data
 Testing Data
 2026-10-24 → 2026-10-30
 ```
-## This better represents a real-world scenario in which historical data is used to evaluate performance on later observations.
+ This better represents a real-world scenario in which historical data is used to evaluate performance on later observations.
 
-## Model Evaluation
+### Model Evaluation
 Models are evaluated using:
 Accuracy
 Macro F1-score
@@ -139,9 +139,9 @@ A particularly costly error can be:
 Actual: Imminent
 Predicted: Safe
 ```
-## The system would fail to warn the business about a potential stockout. Therefore, overall accuracy is not treated as the only evaluation criterion.
+The system would fail to warn the business about a potential stockout. Therefore, overall accuracy is not treated as the only evaluation criterion.
 
-## Prediction Output
+### Prediction Output
 The final pipeline produces:
 Store ID
 SKU ID
@@ -173,7 +173,7 @@ Risk Classification
         ↓
 Inventory Team Action
 ```
-## Example Actions
+### Example Actions
 Safe
 Continue normal replenishment planning
 No immediate intervention
@@ -188,7 +188,7 @@ Escalate to inventory operations
 Evaluate supplier alternatives
 Consider demand allocation or substitution
 
-## Technology Stack
+### Technology Stack
 Technology	Purpose
 Python	Core programming
 Pandas	Data manipulation
@@ -244,7 +244,7 @@ Data Loading
 → High-Risk Export
 ```
 ---
-## Key Project Learnings
+### Key Project Learnings
 This project demonstrates practical understanding of:
 Multi-table data integration
 Data-quality handling
@@ -259,7 +259,7 @@ Data leakage prevention
 Business-focused ML evaluation
 Translating predictions into operational actions
 
-## Future Improvements
+### Future Improvements
 A more production-oriented version could move the target into the future:
 ```text
 Today's Information
@@ -268,7 +268,7 @@ Predict Tomorrow / Next Few Days
         ↓
 Future Stockout Risk
 ```
-## Potential extensions:
+### Potential extensions:
 Future-horizon stockout prediction
 XGBoost / LightGBM comparison
 Hyperparameter optimization
@@ -280,21 +280,21 @@ Power BI inventory-risk dashboard
 Real-time alerts for Imminent SKUs
 Store-SKU replenishment recommendations
 
-## Business Impact
+### Business Impact
 The project transforms raw operational data into an actionable inventory-risk signal.
 Instead of only asking:
-> \\\\\\\*\\\\\\\*“Which products are already out of stock?”\\\\\\\*\\\\\\\*
+“Which products are already out of stock?”
 the system moves toward:
-> \\\\\\\*\\\\\\\*“Which products are likely to become a stockout problem, and where should the inventory team investigate?”\\\\\\\*\\\\\\\*
+“Which products are likely to become a stockout problem, and where should the inventory team investigate?”
 This represents a shift from reactive inventory monitoring toward predictive inventory management.
----
-## Disclaimer
+
+### Disclaimer
 This project uses a simulated QuickCart-style dataset created for educational and portfolio purposes. The business scenario, entities, and operational data do not represent actual QuickCart internal data.
 
-## Author
+### Author
 Abhay Pratap Singh
 B.Tech — Artificial Intelligence & Data Science  
 Aspiring Data Analyst | Data Analytics | Business Intelligence
 
-Project Focus
+### Project Focus
 Data Analytics • Machine Learning • Inventory Analytics • Supply Chain Analytics • Predictive Modeling
