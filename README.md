@@ -12,7 +12,7 @@ QuickCart operates **12 dark stores across 6 Indian metropolitan cities**, manag
 
 The goal is to provide an early-warning system that helps inventory teams balance **product availability** against **excess inventory**.
 
-\---
+
 
 ## Business Problem
 
@@ -20,7 +20,7 @@ Stockouts in quick-commerce can cause lost sales, poor customer experience, redu
 
 QuickCart therefore needs to identify **which Store × SKU combinations require attention before a stockout occurs**.
 
-\---
+
 
 ## Project Objective
 
@@ -42,7 +42,7 @@ Risk categories:
 |`0 to < 3 days`|At-Risk|
 |`< 0 days`|Imminent|
 
-\---
+
 
 ## Dataset
 
@@ -84,7 +84,7 @@ Store × SKU × Day
 
 Important fields include opening stock, closing stock, demand, sales, reorder point, expected lead time, sales velocity, days of cover, festival indicator, and stockout risk.
 
-\---
+
 
 ## Data Quality \& Cleaning
 
@@ -112,7 +112,7 @@ The inventory fact table contains exactly:
 12 stores × 60 SKUs × 30 days = 21,600 records
 ```
 
-\---
+
 
 ## Target Distribution
 
@@ -124,7 +124,7 @@ The inventory fact table contains exactly:
 
 Because of this class imbalance, **accuracy alone is not sufficient** for evaluation. Particular attention is given to **Imminent recall**, since missing a genuine stockout risk can have a direct business cost.
 
-\---
+
 
 ## Feature Engineering
 
@@ -189,7 +189,7 @@ Reorder Gap = Reorder Point - Closing Stock
 
 Historical cover pressure is also derived from lagged stock and demand information.
 
-\---
+
 
 ## Leakage Prevention
 
@@ -208,7 +208,7 @@ Historical and lagged information is used where appropriate.
 
 A model should use information that would actually be available at prediction time.
 
-\---
+
 
 ## Machine Learning Approach
 
@@ -228,7 +228,7 @@ Categorical variables are transformed using **One-Hot Encoding** and numerical v
 
 Class balancing is applied to Logistic Regression and Random Forest.
 
-\---
+
 
 ## Train/Test Strategy
 
@@ -244,7 +244,7 @@ Testing Data
 
 This better represents a real-world scenario in which historical data is used to evaluate performance on later observations.
 
-\---
+
 
 ## Model Evaluation
 
@@ -269,7 +269,7 @@ Predicted: Safe
 
 The system would fail to warn the business about a potential stockout. Therefore, overall accuracy is not treated as the only evaluation criterion.
 
-\---
+
 
 ## Prediction Output
 
@@ -290,7 +290,7 @@ Imminent
 
 This connects ML predictions with practical inventory monitoring.
 
-\---
+
 
 ## Business Workflow
 
@@ -333,7 +333,7 @@ Inventory Team Action
 * Evaluate supplier alternatives
 * Consider demand allocation or substitution
 
-\---
+
 
 ## Technology Stack
 
@@ -348,7 +348,7 @@ Inventory Team Action
 |Google Colab|Development environment|
 |CSV|Data storage|
 
-\---
+
 
 ## Project Structure
 
@@ -368,7 +368,7 @@ QuickCart-Warehouse-Stockout-Risk/
 
 ```
 
-\---
+
 
 ## How to Run
 
@@ -408,7 +408,7 @@ Data Loading
 → High-Risk Export
 ```
 
-\---
+
 
 ## Key Project Learnings
 
@@ -427,7 +427,7 @@ This project demonstrates practical understanding of:
 * Business-focused ML evaluation
 * Translating predictions into operational actions
 
-\---
+
 
 ## Future Improvements
 
@@ -454,7 +454,7 @@ Potential extensions:
 * Real-time alerts for Imminent SKUs
 * Store-SKU replenishment recommendations
 
-\---
+
 
 ## Business Impact
 
@@ -470,13 +470,13 @@ the system moves toward:
 
 This represents a shift from reactive inventory monitoring toward predictive inventory management.
 
-\---
+
 
 ## Disclaimer
 
 This project uses a simulated QuickCart-style dataset created for educational and portfolio purposes. The business scenario, entities, and operational data do not represent actual QuickCart internal data.
 
-\---
+
 
 ## Author
 
