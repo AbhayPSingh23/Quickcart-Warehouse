@@ -4,9 +4,11 @@
 QuickCart Warehouse Inventory Stockout Risk is an end-to-end machine learning project designed to predict inventory stockout risk at the Store × SKU × Day level.
 
 QuickCart operates 12 dark stores across 6 Indian metropolitan cities, managing 60 SKUs across 8 categories and 15 suppliers. The system classifies inventory positions into:
-🟢 Safe — sufficient stock buffer before replenishment arrives
-🟡 At-Risk — stock cover is getting close to replenishment wait
-🔴 Imminent — inventory may run out before replenishment arrives
+
+### 🟢 Safe — sufficient stock buffer before replenishment arrives
+### 🟡 At-Risk — stock cover is getting close to replenishment wait
+### 🔴 Imminent — inventory may run out before replenishment arrives
+
 The goal is to provide an early-warning system that helps inventory teams balance product availability against excess inventory.**
 
 ## Business Problem
@@ -20,9 +22,8 @@ The project uses:
 ```text
 Inventory Buffer = Days of Stock Cover - Replenishment Wait
 ```
-## Dataset
+### Dataset Overview
 The project contains five interconnected datasets which were already uploaded in this repository in the .csv format.
-
 ### Data Quality & Cleaning
 The project contains realistic data-quality challenges.
 ### City Naming Inconsistency
@@ -37,14 +38,14 @@ The inventory fact table contains exactly:
 ```text
 12 stores × 60 SKUs × 30 days = 21,600 records
 ```
----
-Target Distribution
+
+### Target Distribution
 Stockout Risk	Share
 Safe	65.42%
 At-Risk	24.01%
 Imminent	10.57%
 Because of this class imbalance, accuracy alone is not sufficient for evaluation. Particular attention is given to Imminent recall, since missing a genuine stockout risk can have a direct business cost.
----
+
 ## Feature Engineering
 The model combines current inventory information, historical behavior, supplier characteristics, product characteristics, store characteristics, and event information.
 Inventory Features
@@ -152,8 +153,8 @@ A separate high-risk inventory output is generated for records predicted as:
 ```text
 Imminent
 ```
-This connects ML predictions with practical inventory monitoring.
----
+### This connects ML predictions with practical inventory monitoring.
+
 Business Workflow
 ```text
 Daily Inventory Data
@@ -290,10 +291,10 @@ This represents a shift from reactive inventory monitoring toward predictive inv
 ## Disclaimer
 This project uses a simulated QuickCart-style dataset created for educational and portfolio purposes. The business scenario, entities, and operational data do not represent actual QuickCart internal data.
 
-Author
+## Author
 Abhay Pratap Singh
 B.Tech — Artificial Intelligence & Data Science  
 Aspiring Data Analyst | Data Analytics | Business Intelligence
----
+
 Project Focus
 Data Analytics • Machine Learning • Inventory Analytics • Supply Chain Analytics • Predictive Modeling
