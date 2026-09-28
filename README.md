@@ -485,7 +485,7 @@ This project uses a simulated QuickCart-style dataset created for educational an
 B.Tech — Artificial Intelligence \& Data Science  
 Aspiring Data Analyst | Data Analytics | Business Intelligence
 
-\---
+
 
 ### Project Focus
 
