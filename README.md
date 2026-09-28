@@ -4,12 +4,11 @@
 QuickCart Warehouse Inventory Stockout Risk is an end-to-end machine learning project designed to predict inventory stockout risk at the Store × SKU × Day level.
 
 QuickCart operates 12 dark stores across 6 Indian metropolitan cities, managing 60 SKUs across 8 categories and 15 suppliers. The system classifies inventory positions into:
+🟢 Safe — sufficient stock buffer before replenishment arrives.
+🟡 At-Risk — stock cover is getting close to replenishment wait.
+🔴 Imminent — inventory may run out before replenishment arrives.
 
- 🟢 Safe — sufficient stock buffer before replenishment arrives
- 🟡 At-Risk — stock cover is getting close to replenishment wait
- 🔴 Imminent — inventory may run out before replenishment arrives
-
-The goal is to provide an early-warning system that helps inventory teams balance product availability against excess inventory.**
+The goal is to provide an early-warning system that helps inventory teams balance product availability against excess inventory.
 
 ### Business Problem
 Stockouts in quick-commerce can cause lost sales, poor customer experience, reduced availability, and emergency replenishment. Excess inventory can simultaneously increase capital tied up in stock, storage requirements, wastage risk, and operating costs.
@@ -24,21 +23,25 @@ Inventory Buffer = Days of Stock Cover - Replenishment Wait
 ```
 ### Dataset Overview
 The project contains five interconnected datasets which were already uploaded in this repository in the .csv format.
+
 ### Data Quality & Cleaning
 The project contains realistic data-quality challenges.
+
 ### City Naming Inconsistency
 Two records contained casing differences. The clean `city` field was retained as the primary join key and the display field was standardized.
+
 ### Supplier Reliability
 Contains literal `N/A` values. These were converted to missing values using numeric coercion and imputed using the appropriate supplier-category median.
+
 ### Missing Actual Lead Time
 Contains approximately 92.1% missing values. This is expected because actual lead time is only available after replenishment has occurred, so it was not blindly imputed.
+
 ### Duplicate Validation
 No duplicate records were found in the supplied datasets.
 The inventory fact table contains exactly:
 ```text
 12 stores × 60 SKUs × 30 days = 21,600 records
 ```
-
 ### Target Distribution
 Stockout Risk	Share
 Safe	65.42%
@@ -106,14 +109,17 @@ A model should use information that would actually be available at prediction ti
 
 ### Machine Learning Approach
 The project is formulated as a three-class classification problem.
+
 ### Baseline
 A majority-class baseline predicts `Safe` for every observation. Since Safe represents approximately 65.42% of the data, this provides a useful benchmark.
+
 ### Models
 Logistic Regression
 Random Forest
 Gradient Boosting
 Categorical variables are transformed using One-Hot Encoding and numerical variables are standardized where appropriate.
 Class balancing is applied to Logistic Regression and Random Forest.
+
 ### Train/Test Strategy
 A time-based split is used rather than a purely random split:
 ```text
@@ -122,7 +128,7 @@ Training Data
 Testing Data
 2026-10-24 → 2026-10-30
 ```
- This better represents a real-world scenario in which historical data is used to evaluate performance on later observations.
+This better represents a real-world scenario in which historical data is used to evaluate performance on later observations.
 
 ### Model Evaluation
 Models are evaluated using:
@@ -199,27 +205,24 @@ Joblib	Model persistence
 Google Colab	Development environment
 CSV	Data storage
 
-Project Structure
+### Project Structure
 ```text
 QuickCart-Warehouse-Stockout-Risk/
 │
 ├── README.md
 │
-├── data/
-│   ├── dim\\\\\\\_stores.csv
-│   ├── dim\\\\\\\_skus.csv
-│   ├── dim\\\\\\\_suppliers.csv
-│   ├── dim\\\\\\\_events.csv
-│   └── fact\\\\\\\_inventory\\\\\\\_daily.csv
+├── Datasets
+│   ├── dim_events.csv
+│   ├── dim_skus.csv
+│   ├── dim_stores.csv
+│   ├── dim_suppliers.csv
+│   └── fact_inventory_daily.csv
 │   
-├── notebook 
-│    └── QuickCart\\\\\\\_Stockout\\\\\\\_Risk.ipynb
+├── Notebook 
+│    └── QuickCart.ipynb
 |
-├── outputs/
-│    ├── quickcart\\\\\\\_stockout\\\\\\\_predictions.csv
-│    └── quickcart\\\\\\\_high\\\\\\\_risk\\\\\\\_inventory.csv
+├── Outputs
 
----
 How to Run
 1. Install dependencies
 ```bash
