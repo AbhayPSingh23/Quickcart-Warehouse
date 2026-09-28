@@ -354,6 +354,7 @@ Inventory Team Action
 
 ```text
 QuickCart-Warehouse-Stockout-Risk/
+└── README.md
 │
 ├── data/
 │   ├── dim_events.csv
@@ -362,17 +363,9 @@ QuickCart-Warehouse-Stockout-Risk/
 │   ├── dim_suppliers.csv
 │   └── fact_inventory_daily.csv
 │
-├── notebooks/
+├── notebook/
 │   └── QuickCart_Stockout_Risk.ipynb
-│
-├── outputs/
-│   ├── quickcart_stockout_predictions.csv
-│   └── quickcart_high_risk_inventory.csv
-│
-├── models/
-│   └── quickcart_stockout_model.joblib
-│
-└── README.md
+
 ```
 
 \---
@@ -382,8 +375,7 @@ QuickCart-Warehouse-Stockout-Risk/
 ### 1\. Clone the repository
 
 ```bash
-git clone <repository-url>
-cd QuickCart-Warehouse-Stockout-Risk
+ QuickCart-Warehouse-Stockout-Risk
 ```
 
 ### 2\. Install dependencies
@@ -394,10 +386,9 @@ pip install pandas numpy matplotlib scikit-learn joblib
 
 ### 3\. Open the notebook
 
-Open:
 
 ```text
-notebooks/QuickCart\\\\\\\\\\\\\\\_Stockout\\\\\\\\\\\\\\\_Risk.ipynb
+https://colab.research.google.com/drive/1kWV-ErfkEGRDIkOBBx0rp1mTZPflUWln
 ```
 
 using Google Colab or Jupyter Notebook.
