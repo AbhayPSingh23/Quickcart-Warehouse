@@ -375,7 +375,7 @@ QuickCart-Warehouse-Stockout-Risk/
 ### 1\. Clone the repository
 
 ```bash
- QuickCart-Warehouse-Stockout-Risk
+ QuickCart-Warehouse
 ```
 
 ### 2\. Install dependencies
